@@ -48,7 +48,7 @@
 			for (LivroModel livro : livros) {
 	%>
 	<tr>
-		<td><a href="<%= livro.getTitulo() %>"><%= livro.getTitulo() %></a></td>
+		<td><a href="alterar/<%= livro.getTitulo() %>" ><%= livro.getTitulo() %></a></td>
 		<td><%= livro.getEditora() %></td>
 	</tr>
 	<%

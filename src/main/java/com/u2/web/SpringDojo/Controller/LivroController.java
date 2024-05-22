@@ -79,11 +79,15 @@ public class LivroController {
 		request.getSession().setAttribute("livros",livroRN.pesquisarTodos());
 		return "Pesquisas";
 	}
-	@PostMapping()
+	@GetMapping("/alterar/livro.getTitulo()")
 	public String alterarLivro(HttpServletRequest request,@RequestParam(value = "titulo")String titulo,
 							   @RequestParam(value = "editora")String editora){
-		return null;
+		livroRN.pegarLivroAntigo(titulo);
+		request.getSession().setAttribute("mensagem",livroRN.editarLivro(titulo,editora));
+		return "AlterarDeletar";
 	}
+
+
 
 
 }
