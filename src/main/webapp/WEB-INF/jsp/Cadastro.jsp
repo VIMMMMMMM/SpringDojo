@@ -1,5 +1,7 @@
+<%@ page import="com.u2.web.SpringDojo.model.LivroModel" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+		 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 
 </head>
 <body>
-<form name="form1" method="get" action="/cadastrar" >
+<form name="form1" method="post" action="/cadastrar" >
 <table>
 	<tr>
 		<td><font color="red" size="14"><%= request.getSession().getAttribute("mensagem")!= null ?request.getSession().getAttribute("mensagem"):""  %></font>
@@ -21,7 +23,7 @@
 		<td>Título</td>
 		<td><input type="text" name="titulo"></td>
 	</tr>
-	
+
 	<tr>
 		<td>Editora</td>
 		<td><input type="text" name="editora"></td>
@@ -34,6 +36,28 @@
 </table>
 </form>
 
+<h2>Lista de Livros Cadastrados</h2>
+<table border="1">
+	<tr>
+		<th>Título</th>
+		<th>Editora</th>
+	</tr>
+	<%
+		List<LivroModel> livros = (List<LivroModel>) request.getAttribute("livros");
+		if (livros != null) {
+			for (LivroModel livro : livros) {
+	%>
+	<tr>
+		<td><a href="<%= livro.getTitulo() %>"><%= livro.getTitulo() %></a></td>
+		<td><%= livro.getEditora() %></td>
+	</tr>
+	<%
+			}
+		}
+	%>
+</table>
+
 <% request.getSession().removeAttribute("mensagem"); %>
+
 </body>
 </html>

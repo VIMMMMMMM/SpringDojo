@@ -16,6 +16,9 @@
 <form name="form1" method="get" action="/pesquisar">
     <table>
         <tr>
+            <td><font color="red" size="14"><%= request.getSession().getAttribute("mensagem")!= null ?request.getSession().getAttribute("mensagem"):""  %></font>
+        </tr>
+        <tr>
             <td>Digite os dados do livro</td>
         </tr>
 

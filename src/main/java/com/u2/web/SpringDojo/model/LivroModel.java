@@ -8,9 +8,6 @@ public class LivroModel {
 	private String titulo;
 	private String editora;
 	
-	
-	
-	
 	public LivroModel() {
 		super();
 	}
