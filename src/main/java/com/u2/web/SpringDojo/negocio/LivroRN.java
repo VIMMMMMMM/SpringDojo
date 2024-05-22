@@ -8,7 +8,7 @@ import com.u2.web.SpringDojo.model.LivroModel;
 
 public class LivroRN {
 	private HashMap<String, LivroModel> hashLivro = new HashMap<>();
-	private LivroModel livro = new LivroModel();
+	public LivroModel livro = new LivroModel("","");
 
 	public boolean cadastrarLivro(LivroModel model) {
 
@@ -40,16 +40,25 @@ public class LivroRN {
 		}
 	}
 
-	public LivroModel editarLivro(String titulo, String editora){
+	public void editarLivro(LivroModel livroNovo){
 		//hashLivro.containsKey(titulo);
-		System.out.println(livro.toString() + " dentro de editar");
-		if(!titulo.equals(livro.getTitulo())){
-			livro.setTitulo(titulo);
+		System.out.println(livro.toString() + " antes do primeiro if");
+		if (!livro.getTitulo().isEmpty()){
+			System.out.println(livro.toString() + " não é nulo");
+			if (hashLivro.containsKey(livro.getTitulo())) {
+				hashLivro.remove(livro.getTitulo());
+				hashLivro.put(livroNovo.getTitulo(), livroNovo);
+				livro = new LivroModel("","");
+				System.out.println("Chave e valor atualizados com sucesso!");
+				return;
+			}
 		}
-		if(!editora.equals(livro.getEditora())){
-			livro.setEditora(editora);
+		if (livro.getTitulo().isEmpty()){
+			System.out.println(livro.toString() + " é nulo");
+			livro = livroNovo;
+			return;
 		}
-		return hashLivro.put(livro.getTitulo(),livro);
+		System.out.println(livro.toString() + " depois do primeiro if");
 	}
 
 	public HashMap<String, LivroModel> pesquisarTodos() {

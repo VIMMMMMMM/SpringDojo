@@ -79,15 +79,16 @@ public class LivroController {
 		request.getSession().setAttribute("livros",livroRN.pesquisarTodos());
 		return "Pesquisas";
 	}
-	@GetMapping("/alterar/livro.getTitulo()")
-	public String alterarLivro(HttpServletRequest request,@RequestParam(value = "titulo")String titulo,
-							   @RequestParam(value = "editora")String editora){
-		livroRN.pegarLivroAntigo(titulo);
-		request.getSession().setAttribute("mensagem",livroRN.editarLivro(titulo,editora));
+
+	@GetMapping("/alterarDeletar")
+	public String alterarDeletar(@RequestParam(value = "titulo") String titulo,
+								 @RequestParam(value = "editora") String editora,
+								 Model model) {
+		LivroModel livro = new LivroModel(titulo, editora);
+		//livroRN.livro = livro;
+		livroRN.editarLivro(livro);
+		model.addAttribute("livro", livro);
 		return "AlterarDeletar";
 	}
-
-
-
 
 }
