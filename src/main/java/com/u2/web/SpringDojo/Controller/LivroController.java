@@ -93,4 +93,23 @@ public class LivroController {
 		return "AlterarDeletar";
 	}
 
+	@RequestMapping({"/remover"})
+	public String deletarLivro(HttpServletRequest request,
+							   @RequestParam(value="titulo") String titulo) {
+		String mensagem = "";
+
+		if(titulo.isEmpty()) {
+			mensagem  = "Digite um titulo";
+		} else if(!livroRN.contains(titulo)) {
+			mensagem = "Livro não encontrado";
+		} else {
+			livroRN.remove(titulo);
+			mensagem = "Livro foi removido";
+		}
+
+        request.getSession().setAttribute("mensagem", mensagem);
+
+        return "redirect:/homeLivro";
+	}
+
 }

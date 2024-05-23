@@ -69,4 +69,16 @@ public class LivroRN {
 	public List<LivroModel> listarTodosLivros() {
 		return new ArrayList<>(hashLivro.values());
 	}
+
+	public boolean remove(String titulo){
+		if (contains(titulo)){
+			hashLivro.remove(titulo);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean contains(String titulo) {
+		return hashLivro.containsKey(titulo);
+	}
 }
