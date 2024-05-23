@@ -40,7 +40,7 @@ public class LivroRN {
 		}
 	}
 
-	public void editarLivro(LivroModel livroNovo){
+	public boolean editarLivro(LivroModel livroNovo){
 		//hashLivro.containsKey(titulo);
 		System.out.println(livro.toString() + " antes do primeiro if");
 		if (!livro.getTitulo().isEmpty()){
@@ -50,15 +50,16 @@ public class LivroRN {
 				hashLivro.put(livroNovo.getTitulo(), livroNovo);
 				livro = new LivroModel("","");
 				System.out.println("Chave e valor atualizados com sucesso!");
-				return;
+				return true;
 			}
 		}
 		if (livro.getTitulo().isEmpty()){
 			System.out.println(livro.toString() + " é nulo");
 			livro = livroNovo;
-			return;
+			return false;
 		}
 		System.out.println(livro.toString() + " depois do primeiro if");
+		return false;
 	}
 
 	public HashMap<String, LivroModel> pesquisarTodos() {

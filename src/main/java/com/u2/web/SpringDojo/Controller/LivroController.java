@@ -85,8 +85,10 @@ public class LivroController {
 								 @RequestParam(value = "editora") String editora,
 								 Model model) {
 		LivroModel livro = new LivroModel(titulo, editora);
-		//livroRN.livro = livro;
-		livroRN.editarLivro(livro);
+		boolean editou = livroRN.editarLivro(livro);
+		if (editou){
+			return "redirect:/homeLivro";
+		}
 		model.addAttribute("livro", livro);
 		return "AlterarDeletar";
 	}
