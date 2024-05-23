@@ -22,7 +22,7 @@ public class LivroController {
 	public String abreCadastro(Model model) {
 		List<LivroModel> livros = livroRN.listarTodosLivros();
 		model.addAttribute("livros", livros);
-		return "Cadastro";
+		return "Cadastrar";
 	}
 
 	@PostMapping("/cadastrar")
@@ -60,27 +60,22 @@ public class LivroController {
 		List<LivroModel> livros = livroRN.listarTodosLivros();
 		model.addAttribute("livros", livros);
 
-		return "Cadastro";
+		return "Cadastrar";
 	}
 
 	@GetMapping("/pesquisarLivro")
 	public String abrePesquisa(){
-		return "Pesquisa";
+		return "Pesquisar";
 	}
 	@RequestMapping(value = "/pesquisar")
 	public String findByTitle(@RequestParam(value = "titulo")String titulo,
 										HttpServletRequest request){
 		request.getSession().setAttribute("livros",livroRN.pesquisarLivro(titulo).toString());
-		return "Pesquisa";
+		return "Pesquisar";
 	}
 
-	@GetMapping("/pesquisarTodos")
-	public String findAll(HttpServletRequest request){
-		request.getSession().setAttribute("livros",livroRN.pesquisarTodos());
-		return "Pesquisas";
-	}
 
-	@GetMapping("/alterarDeletar")
+	@GetMapping("/alterar")
 	public String alterarDeletar(@RequestParam(value = "titulo") String titulo,
 								 @RequestParam(value = "editora") String editora,
 								 Model model) {

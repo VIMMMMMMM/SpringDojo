@@ -12,7 +12,7 @@
 <%
 LivroModel livro = (LivroModel) request.getAttribute("livro");
 %>
-<form name="form1" method="get" action="/alterarDeletar">
+<form name="form1" method="get" action="/alterar">
 <table>
 <tr>
 <td><font color="red" size="14"><%= request.getSession().getAttribute("mensagem") != null ? request.getSession().getAttribute("mensagem") : "" %></font></td>
@@ -29,7 +29,7 @@ LivroModel livro = (LivroModel) request.getAttribute("livro");
 <td><input type="text" name="editora" value="<%= livro != null ? livro.getEditora() : "" %>"></td>
 </tr>
 <tr>
-<td><button type="submit" formaction="/alterarDeletar">Alterar</button></td>
+<td><button type="submit" formaction="/alterar">Alterar</button></td>
 <td><button type="submit" formaction="/remover">Remover</button></td>
 </tr>
 </table>

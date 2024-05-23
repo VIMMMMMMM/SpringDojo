@@ -25,9 +25,11 @@
 <td>Editora</td>
 <td><input type="text" name="editora"></td>
 </tr>
+    <% String redirectURL = "/pesquisarLivro";%>
 <tr>
 <td><button type="submit">Enviar</button></td>
 <td><input type="reset" value="Limpar"></td>
+    <td><input type="button" name="pesquisar"  onclick="document.location.href='<%= redirectURL %>'" value="pesquisar"></td>
 </tr>
 </table>
 </form>
@@ -44,7 +46,7 @@ if (livros != null) {
 for (LivroModel livro : livros) {
 %>
 <tr>
-<td><a href="${pageContext.request.contextPath}/alterarDeletar?titulo=<%= livro.getTitulo() %>&editora=<%= livro.getEditora() %>"><%= livro.getTitulo() %></a></td>
+<td><a href="${pageContext.request.contextPath}/alterar?titulo=<%= livro.getTitulo() %>&editora=<%= livro.getEditora() %>"><%= livro.getTitulo() %></a></td>
 <td><%= livro.getEditora() %></td>
 </tr>
 <%

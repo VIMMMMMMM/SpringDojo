@@ -41,7 +41,8 @@
 
     </table>
 </form>
-
+<% request.getSession().removeAttribute("livros"); %>
+<% request.getSession().removeAttribute("mensagem"); %>
 
 </body>
 </html>
