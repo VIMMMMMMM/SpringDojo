@@ -103,6 +103,7 @@ public class LivroController {
 		} else if(!livroRN.contains(titulo)) {
 			mensagem = "Livro não encontrado";
 		} else {
+			livroRN.livro = new LivroModel("","");
 			livroRN.remove(titulo);
 			mensagem = "Livro foi removido";
 		}

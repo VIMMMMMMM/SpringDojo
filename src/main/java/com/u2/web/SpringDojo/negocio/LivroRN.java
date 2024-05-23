@@ -41,24 +41,18 @@ public class LivroRN {
 	}
 
 	public boolean editarLivro(LivroModel livroNovo){
-		//hashLivro.containsKey(titulo);
-		System.out.println(livro.toString() + " antes do primeiro if");
 		if (!livro.getTitulo().isEmpty()){
-			System.out.println(livro.toString() + " não é nulo");
 			if (hashLivro.containsKey(livro.getTitulo())) {
 				hashLivro.remove(livro.getTitulo());
 				hashLivro.put(livroNovo.getTitulo(), livroNovo);
 				livro = new LivroModel("","");
-				System.out.println("Chave e valor atualizados com sucesso!");
 				return true;
 			}
 		}
 		if (livro.getTitulo().isEmpty()){
-			System.out.println(livro.toString() + " é nulo");
 			livro = livroNovo;
 			return false;
 		}
-		System.out.println(livro.toString() + " depois do primeiro if");
 		return false;
 	}
 
