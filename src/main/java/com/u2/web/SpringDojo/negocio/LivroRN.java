@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.u2.web.SpringDojo.model.LivroModel;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LivroRN {
 	private HashMap<String, LivroModel> hashLivro = new HashMap<>();
 	public LivroModel livro = new LivroModel("","");

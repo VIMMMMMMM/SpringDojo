@@ -2,6 +2,7 @@ package com.u2.web.SpringDojo.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,8 @@ import java.util.List;
 
 @Controller
 public class LivroController {
-	LivroRN livroRN = new LivroRN();
+@Autowired
+private LivroRN livroRN;
 
 	@GetMapping("/homeLivro")
 	public String abreCadastro(Model model) {
